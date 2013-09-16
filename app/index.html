@@ -1,0 +1,206 @@
+<!doctype html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" id="ng-app" ng-app="airquotes"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" id="ng-app" ng-app="airquotes"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" id="ng-app" ng-app="airquotes"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" id="ng-app" ng-app="airquotes"> <!--<![endif]-->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Get a Quote</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+
+    <link href='http://fonts.googleapis.com/css?family=Patua+One' rel='stylesheet' type='text/css'>
+    <link href="styles/quotes.css" rel="stylesheet" type="text/css"/>
+  </head>
+  <body>
+    <script type="text/ng-template" id="quote.html">
+      <div class="mptext" style="padding:10px;">
+        <div class="quote_container"
+             style="background-color:white;border:1px solid #ddd;padding:25px 10px 10px 20px;width:350px;margin-top:10px;">
+          <h1 class="quotetitle">Quote Generator</h1>
+
+          <div style="clear: both; height: 10px;"></div>
+          <div id="form">
+            <img ng-src="{{shirt.image}}" width="100" height="120" alt="{{shirt.name}}"
+                 style="float:left; padding-right:7px;"/>
+            <font style="font-size:15px;">
+              <span class="shirttitle">{{shirt.name}}</span>
+
+              <p class="shirtdesc">{{shirt.description}}</p>
+              <a href='/' style="text-decoration:none;">Choose Another Shirt &#187;</a><br>
+            </font>
+
+            <h3 class='biggrey'>1. Select a t-shirt color</h3>
+
+            <div style="margin-left:15px;">
+              <div class="colorbox" ng-repeat="shirtColor in shirt.colors" title="{{shirtColor.name}}" ng-click="selectColor(shirtColor)"
+                   ng-style="colorStyle(shirtColor)"></div>
+            </div>
+
+            <div style="clear:both;height:10px;"></div>
+
+            <h3 class="biggrey">2. Shirt Quantities</h3>
+
+            <div class="sizeInput">S <input type="number" ng-model="numSmall" min="0"
+                                            style="width:38px;"/>&nbsp;&nbsp;</span></div>
+            <div class="sizeInput">M <input type="number" ng-model="numMedium" min="0"
+                                            style="width:38px;"/>&nbsp;&nbsp;</span></div>
+            <div class="sizeInput">L <input type="number" ng-model="numLarge" min="0"
+                                            style="width:38px;"/>&nbsp;&nbsp;</span></div>
+            <div class="sizeInput">XL <input type="number" ng-model="numXLarge" min="0"
+                                             style="width:38px;"/>&nbsp;&nbsp;</span></div>
+            <div min="0" style="width:100%;height:1px;clear:both;">&nbsp;</div>
+            <div class="sizeInput">2XL <input type="number" ng-model="num2XLarge" min="0" style="width:38px;"/>&nbsp;&nbsp;</span>
+            </div>
+            <div class="sizeInput">3XL <input type="number" ng-model="num3XLarge" min="0" style="width:38px;"/>&nbsp;&nbsp;</span>
+            </div>
+            <div class="sizeInput">4XL <input type="number" ng-model="num4XLarge" min="0" style="width:38px;"/>&nbsp;&nbsp;</span>
+            </div>
+            <div class="sizeInput">5XL <input type="number" ng-model="num5XLarge" min="0" style="width:38px;"/>&nbsp;&nbsp;</span>
+            </div>
+
+            <div style="clear:both;height:10px;"></div>
+
+            <h3 class="biggrey">3. Number of Ink Colors</h3>
+
+            <div style="margin-left:10px;padding:5px;">
+              <div style="float:left;width:50%;">
+                Front of shirt:
+                <select name="front_color" ng-model="numFrontImprintColors">
+                  <option selected="selected">0</option>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                  <option>6</option>
+                </select>
+              </div>
+
+              <div style="float:left;width:50%;">
+                Back of shirt:
+                <select name="back_color" ng-model="numBackImprintColors">
+                  <option selected="selected">0</option>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                  <option>6</option>
+                </select>
+              </div>
+            </div>
+
+            <br>
+            <br>
+
+            </form>
+          </div>
+
+          <!-- PRICE TOTAL STARTS HERE-->
+          <div style="padding:10px 8px 10px 8px;border-top:1px solid #ccc;margin-right:15px;">
+            <h3 class='biggrey' style='margin:0 0 5px 0;'>Total Price</h3>
+
+            <div style="font-size:17px;">
+              <div ng-switch on="quoteStatus()">
+                <span ng-switch-when="tooLargeAnOrder">
+                  <p>For orders of more than 1,000 shirts, please call for our best pricing!</p>
+                </span>
+                <span ng-switch-when="notEnoughInformation">
+                  <p>You must select a shirt color, indicate some sizes you wish to purchase, and choose to have at least
+                    one ink color on the front or back of your shirt. Then we'll give you an instant quote!</p>
+                </span>
+                <span ng-switch-when="quote">
+                  <p><font style="font-size:28px;color:#6BBA70;">{{eachPrice | currency : "$"}} each</font></p><span
+                    style="font-size:22px; color:#5d5e5f;">{{totalPrice | currency : "$"}} total</span><br/>
+
+                  <p class="shirtdesc">Price exclude sales tax (8.25%) Schools and Churches receive a special discount,
+                    contact us for details.</font></p>
+
+                  <div
+                      style="padding:15px 10px 10px 10px;border-top:1px solid #ccc;margin:25px 15px 0 0;font-size:14px;font-family:Arial;color:#777; margin-top:0px;">
+                    <p class='moretitle'>Order more and save!</p>
+                    <table>
+                      <tr>
+                        <td width="80">Quantity</td>
+                        <td width="80">Each</td>
+                        <td>Total</td>
+                      </tr>
+
+                      <tr>
+                        <td ng-bind="priceBreaks[0]"></td>
+                        <td ng-bind="pbEachPrice[0] | currency : '$'"></td>
+                        <td ng-bind="pbTotalPrice[0] | currency : '$'"></td>
+                      </tr>
+                      <tr>
+                        <td ng-bind="priceBreaks[1]"></td>
+                        <td ng-bind="pbEachPrice[1] | currency : '$'"></td>
+                        <td ng-bind="pbTotalPrice[1] | currency : '$'"></td>
+                      </tr>
+                      <tr>
+                        <td ng-bind="priceBreaks[2]"></td>
+                        <td ng-bind="pbEachPrice[2] | currency : '$'"></td>
+                        <td ng-bind="pbTotalPrice[2] | currency : '$'"></td>
+                      </tr>
+                    </table>
+                  </div>
+
+                  <div style='margin:8px 0 2px 0;'>
+                    <form action="startOrder.php" method="post">
+                      <div style="display: none;">
+                        <textarea name="shirt.name">{{shirt.name}}</textarea>
+                        <textarea name="shirt.description">{{shirt.description}}</textarea>
+                        <textarea name="shirt.image">{{shirt.image}}</textarea>
+
+                        <textarea name="color.name">{{color.name}}</textarea>
+                        <textarea name="color.color">{{color.color}}</textarea>
+                        <textarea name="color.dark">{{color.dark}}</textarea>
+
+                        <textarea name="numSmall">{{betterParseInt(numSmall)}}</textarea>
+                        <textarea name="numMedium">{{betterParseInt(numMedium)}}</textarea>
+                        <textarea name="numLarge">{{betterParseInt(numLarge)}}</textarea>
+                        <textarea name="numXLarge">{{betterParseInt(numXLarge)}}</textarea>
+                        <textarea name="num2XLarge">{{betterParseInt(num2XLarge)}}</textarea>
+                        <textarea name="num3XLarge">{{betterParseInt(num3XLarge)}}</textarea>
+                        <textarea name="num4XLarge">{{betterParseInt(num4XLarge)}}</textarea>
+                        <textarea name="num5XLarge">{{betterParseInt(num5XLarge)}}</textarea>
+
+                        <textarea name="numFrontImprintColors">{{betterParseInt(numFrontImprintColors)}}</textarea>
+                        <textarea name="numBackImprintColors">{{betterParseInt(numBackImprintColors)}}</textarea>
+
+                        <textarea name="eachPrice">{{eachPrice | currency : '$'}}</textarea>
+                        <textarea name="totalPrice">{{totalPrice | currency : '$'}}</textarea>
+                      </div>
+                      <button type="submit" class="quotebutton">Start a Order</button>
+                    </form>
+                  </div>
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <br>
+          <!--TOTAL ENDS HERE-->
+        </div>
+      </div>
+    </script>
+
+    <div ng-view></div>
+
+    <!--[if lt IE 7]>
+    <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!--[if lte IE 8]>
+    <script src="components/json3/lib/json3.min.js"></script>
+    <![endif]-->
+
+    <!-- build:js scripts/main.js -->
+    <script src="components/jquery/jquery.min.js"></script>
+    <script src="components/angular/angular.min.js"></script>
+    <script src="scripts/quoteData.js"></script>
+    <script src="scripts/main.js"></script>
+    <!-- endbuild -->
+  </body>
+</html>
