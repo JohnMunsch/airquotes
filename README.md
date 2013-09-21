@@ -6,7 +6,7 @@ This was my first AngularJS project and yet it's surprisingly not that bad. It i
 
 It's a good example of an AngularJS application that's not completely trivial and yet one that does not depend upon having a service it has to connect to for getting and persisting data.
 
-Note: I asked for and received permission to distribute the source code for this project before agreeing to do it. It was understood that I would be sharing the code and writing about it.
+Note: I asked for and received permission to distribute the source code for this project before agreeing to do it. It was understood that I would be sharing the code and writing about it. I have removed a few PHP files and a PDF of the pricing information, though you could pick all of that out of the JavaScript code or just figure it out from pricing a few shirts, so it's not exactly the secret recipe for Coca Cola.
 
 ## "Installation" ##
 
