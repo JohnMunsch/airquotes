@@ -8,9 +8,13 @@ It's a good example of an AngularJS application that's not completely trivial an
 
 Note: I asked for and received permission to distribute the source code for this project before agreeing to do it. It was understood that I would be sharing the code and writing about it. I have removed a few PHP files and a PDF of the pricing information, though you could pick all of that out of the JavaScript code or just figure it out from pricing a few shirts, so it's not exactly the secret recipe for Coca Cola.
 
-![Alt text](/img/get-a-t-shirt-quote.png "The interface as the user first sees it.")
+The interface as the user first sees it: 
 
-![Alt text](/img/prices-and-the-order-more-and-save-sections-update-in-real-time.png "Prices and the quantity discounts update in real-time as the user changes colors, printing colors front and back, quantities, etc.")
+![An image of the user interface laid out with a shirt image, an palette of available colors, fields to enter in quantity, and a place to indicate the number of print colors front and back.](/img/get-a-t-shirt-quote.png "The interface as the user first sees it.")
+
+Prices and the quantity discounts update in real-time as the user changes colors, printing colors front and back, quantities, etc.:
+
+![The same user interface except that the user has selected a color, quantity, and ink colors and it now shows the price and the price breaks that occur at larger quantities.](/img/prices-and-the-order-more-and-save-sections-update-in-real-time.png "Prices and the quantity discounts update in real-time as the user changes colors, printing colors front and back, quantities, etc.")
 
 ## "Installation" ##
 
