@@ -20,10 +20,14 @@ Prices and the quantity discounts update in real-time as the user changes colors
 
 You don't really have to "install" anything to look at or use the code. But if you want to see it run locally or run the unit tests you'll need to do a few things. First off, make sure you've installed Node.js so you can run the Node Package Manager (npm). Then make sure you've installed both Grunt and Bower. I'm not going to tell you how to do all of that, but instead I'll just direct you to the Yeoman project (http://yeoman.io/gettingstarted.html) where they tell you about installing all of these great JavaScript tools. Fortunately, npm makes it all pretty darn easy and installing Node.js is easy too.
 
-Now you can run a couple of commands in the root of the airquotes project to get installed what you need to run or test it locally.
+Now you can run a couple of commands in the root of the airquotes project to get installed what you need to run or test it locally:
 
 sudo npm install -g karma
 
 bower install
 
 npm install
+
+Then use Grunt to run a server and launch the web page in a browser where you can explore the working UI:
+
+grunt server
