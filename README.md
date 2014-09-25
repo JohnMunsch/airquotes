@@ -44,5 +44,4 @@ Or run the unit tests with (look for the code coverage reports as index.html fil
 
 ## To-Do List
 
-* Deploy the app to a GitHub page so it can be viewed without a user having to download and run it.
 * Add a route which displays a selection of shirts, hoodies, etc. and let the user switch garments from that view.
