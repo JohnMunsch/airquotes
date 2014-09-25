@@ -3,8 +3,9 @@
   "version": "0.0.0",
   "dependencies": {
     "jquery": "~1.9.1",
-    "angular": "~1.0.6",
+    "angular": "~1.2.25",
     "json3": "~3.2.4",
-    "angular-mocks": "~1.0.8"
+    "angular-mocks": "~1.2.25",
+    "angular-route": "~1.2.25"
   }
 }

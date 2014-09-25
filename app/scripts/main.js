@@ -204,7 +204,7 @@ function airquotesCtrl($scope, $routeParams, $log) {
 }
 
 // The AngularJS module for quoting.
-angular.module('airquotes', []).
+angular.module('airquotes', [ 'ngRoute' ]).
   config(['$routeProvider', function($routeProvider) {
     'use strict';
 

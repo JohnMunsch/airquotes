@@ -1,9 +1,0 @@
-{
-  "name": "airquotes",
-  "version": "0.0.0",
-  "dependencies": {
-    "jquery": "~1.9.1",
-    "angular": "~1.0.6"
-  },
-  "devDependencies": {}
-}
