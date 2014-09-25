@@ -1,22 +1,8 @@
-// The AngularJS module for quoting.
-angular.module("airquotes", []).
-    config(['$routeProvider', function($routeProvider) {
-      // This code sets up both a route handler that will pull out the particular shirt we want to display if the
-      // url is of the form "page.html#/shirts/<ID>"
-      //
-      // Note 1: The IDs used in the URL come from the shirtData in the quoteData.js file.
-      // Note 2: If no particular shirt is specified then a default shirt is automatically selected for display.
-      $routeProvider.
-          when("/shirts/:shirtID", { 
-            templateUrl: "quote.html", 
-            controller: airquotesCtrl
-          }).
-          otherwise({
-            redirectTo: "/shirts/PC61"
-          });
-    }]);
-
+/* global inkData, shirtData, maxOrderSize, surchargeDarkColor, surchargeDarkColor, surcharge2XL, surcharge3XL */
+/* global surcharge4XL, surcharge5XL, maxOrderSize, maxOrderSize, maxOrderSize */
 function airquotesCtrl($scope, $routeParams, $log) {
+  'use strict';
+
   // We start by selecting a default shirt from the available shirts (see quoteData.js for the info about each shirt).
   $scope.shirtID = $routeParams.shirtID;
   $scope.shirt = shirtData[$scope.shirtID];
@@ -43,19 +29,19 @@ function airquotesCtrl($scope, $routeParams, $log) {
   // This is used by each of the color boxes to determine it's style. Only the selected color, if any, will
   // have a check mark on it.
   $scope.colorStyle = function (shirtColor) {
-    var checkmark = "";
+    var checkmark = '';
 
-    if ($scope.color == shirtColor) {
-      checkmark = "url('img/checkmark.png') 3px 3px no-repeat"
+    if ($scope.color === shirtColor) {
+      checkmark = 'url("img/checkmark.png") 3px 3px no-repeat';
     }
 
     return {
-      "background" : shirtColor.color + " " + checkmark
+      'background' : shirtColor.color + ' ' + checkmark
     };
   };
 
   $scope.betterParseInt = function (value) {
-    if (value === undefined || value === null || value === "") {
+    if (value === undefined || value === null || value === '') {
       return 0;
     } else {
       var retVal = parseInt(value, 10);
@@ -66,7 +52,7 @@ function airquotesCtrl($scope, $routeParams, $log) {
         return retVal;
       }
     }
-  }
+  };
 
   $scope.quantity = function () {
     return ($scope.betterParseInt($scope.numSmall) + $scope.betterParseInt($scope.numMedium) +
@@ -120,21 +106,21 @@ function airquotesCtrl($scope, $routeParams, $log) {
     var quantity = $scope.quantity();
 
     if (quantity > maxOrderSize) {
-      return "tooLargeAnOrder";
+      return 'tooLargeAnOrder';
     } else {
       var noColor = ($scope.color === undefined);
-      var noSizes = ($scope.quantity() == 0);
-      var noImprintColors = ($scope.betterParseInt($scope.numFrontImprintColors) == 0) &&
-          ($scope.betterParseInt($scope.numBackImprintColors) == 0);
+      var noSizes = ($scope.quantity() === 0);
+      var noImprintColors = ($scope.betterParseInt($scope.numFrontImprintColors) === 0) &&
+          ($scope.betterParseInt($scope.numBackImprintColors) === 0);
 
       if (noColor || noSizes || noImprintColors) {
-        return "notEnoughInformation";
+        return 'notEnoughInformation';
       } else {
         // Perform all the calculations we need to perform so we have a full set of data.
         $scope.allCalculations();
 
         // Then return an indicator that there's enough data to show a quote.
-        return "quote";
+        return 'quote';
       }
     }
   };
@@ -157,7 +143,7 @@ function airquotesCtrl($scope, $routeParams, $log) {
     // Calculates the average price of each shirt. Note: This can be skewed by surcharges on the larger shirts.
     var eachPrice = totalPrice / quantity;
 
-    return { "eachPrice" : eachPrice, "totalPrice" : totalPrice };
+    return { 'eachPrice' : eachPrice, 'totalPrice' : totalPrice };
   };
 
   $scope.printCharge = function (quantity, numFrontColors, numBackColors, darkColor) {
@@ -216,3 +202,24 @@ function airquotesCtrl($scope, $routeParams, $log) {
     return priceBreakLevels;
   };
 }
+
+// The AngularJS module for quoting.
+angular.module('airquotes', []).
+  config(['$routeProvider', function($routeProvider) {
+    'use strict';
+
+    // This code sets up both a route handler that will pull out the particular shirt we want to display if the
+    // url is of the form 'page.html#/shirts/<ID>'
+    //
+    // Note 1: The IDs used in the URL come from the shirtData in the quoteData.js file.
+    // Note 2: If no particular shirt is specified then a default shirt is automatically selected for display.
+    $routeProvider.
+      when('/shirts/:shirtID', {
+        templateUrl: 'quote.html',
+        controller: airquotesCtrl
+      }).
+      otherwise({
+        redirectTo: '/shirts/PC61'
+      });
+  }]);
+
