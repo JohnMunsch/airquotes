@@ -1,5 +1,7 @@
 # airquotes README
 
+[![Code Climate](https://codeclimate.com/github/JohnMunsch/airquotes/badges/gpa.svg)](https://codeclimate.com/github/JohnMunsch/airquotes) [![Test Coverage](https://codeclimate.com/github/JohnMunsch/airquotes/badges/coverage.svg)](https://codeclimate.com/github/JohnMunsch/airquotes)
+
 ## Introduction
 
 This was my first AngularJS project and yet it's surprisingly not that bad. It is an automatic quote generator for a t-shirt website which I developed for someone with whom I used to work. At the time of writing this it was not yet deployed because some of the PHP it has to hook to on the server side was less than stable. But all of the client side work I did was working like a champ.
