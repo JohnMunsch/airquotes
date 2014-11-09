@@ -1,6 +1,6 @@
 # airquotes README
 
-[![Code Climate](https://codeclimate.com/github/JohnMunsch/airquotes/badges/gpa.svg)](https://codeclimate.com/github/JohnMunsch/airquotes) [![Test Coverage](https://codeclimate.com/github/JohnMunsch/airquotes/badges/coverage.svg)](https://codeclimate.com/github/JohnMunsch/airquotes)
+[ ![Codeship Status for JohnMunsch/airquotes](https://codeship.com/projects/d00bc730-4a5f-0132-e0ce-3a47b25aadbc/status)](https://codeship.com/projects/46291) [![Code Climate](https://codeclimate.com/github/JohnMunsch/airquotes/badges/gpa.svg)](https://codeclimate.com/github/JohnMunsch/airquotes) [![Test Coverage](https://codeclimate.com/github/JohnMunsch/airquotes/badges/coverage.svg)](https://codeclimate.com/github/JohnMunsch/airquotes)
 
 ## Introduction
 
